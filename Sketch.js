@@ -1,64 +1,25 @@
-//pong clone
-//mouse to control both paddles
-
-var paddleA, paddleB, ball, wallTop, wallBottom;
-var MAX_SPEED = 10;
+var y = 400;
+var w = 20;
 
 function setup() {
-  createCanvas(800,400);
-  //frameRate(6);
-
-  paddleA = createSprite(30, height/2, 10, 100);
-  paddleA.immovable = true;
-
-  paddleB = createSprite(width-28, height/2, 10, 100);
-  paddleB.immovable = true;
-
-  wallTop = createSprite(width/2, -30/2, width, 30);
-  wallTop.immovable = true;
-
-  wallBottom = createSprite(width/2, height+30/2, width, 30);
-  wallBottom.immovable = true;
-
-  ball = createSprite(width/2, height/2, 10, 10);
-  ball.maxSpeed = MAX_SPEED;
-
-  paddleA.shapeColor = paddleB.shapeColor =ball.shapeColor = color(255,255,255);
-
-  ball.setSpeed(MAX_SPEED, -180);
+  createCanvas(800, 800);
 }
 
 function draw() {
-  background(0);
+  background(150, 16, 200);
+  fill(225);
+  ellipse(100, 400, 50, 50);
 
-  paddleA.position.y = constrain(mouseY, paddleA.height/2, height-paddleA.height/2);
-  paddleB.position.y = constrain(mouseY, paddleA.height/2, height-paddleA.height/2);
+  fill(0, 0, 150);
+  ellipse(200, y, w, w);
+  ellipse(300, y, w, w);
+  ellipse(400, y, w, w);
+  ellipse(500, y, w, w);
+  ellipse(600, y, w, w);
+}
 
-  ball.bounce(wallTop);
-  ball.bounce(wallBottom);
-
-  if(ball.bounce(paddleA)) {
-    var swing = (ball.position.y-paddleA.position.y)/3;
-    ball.setSpeed(MAX_SPEED, ball.getDirection()+swing);
-  }
-
-  if(ball.bounce(paddleB)) {
-    var swing = (ball.position.y-paddleB.position.y)/3;
-    ball.setSpeed(MAX_SPEED, ball.getDirection()-swing);
-  }
-
-  if(ball.position.x<0) {
-  ball.position.x = width/2;
-  ball.position.y = height/2;
-  ball.setSpeed(MAX_SPEED, 0);
-  }
-
-  if(ball.position.x>width) {
-  ball.position.x = width/2;
-  ball.position.y = height/2;
-  ball.setSpeed(MAX_SPEED, 180);
-  }
-
-  drawSprites();
-
+function keyPressed() {
+  if (keyCode == RIGHT_ARROW) {
+    
+    }
 }
